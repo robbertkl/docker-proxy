@@ -1,0 +1,8 @@
+location ^~ /.well-known/acme-challenge/ {
+  default_type "application/jose+json";
+  root /var/www;
+}
+
+location = /.well-known/acme-challenge/ {
+  return 404;
+}

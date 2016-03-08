@@ -1,0 +1,13 @@
+{
+  "name": "docker-proxy",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "node ."
+  },
+  "dependencies": {
+    "async": "^1.5.2",
+    "docker-events": "0.0.2",
+    "dockerode": "^2.2.9",
+    "mustache": "^2.2.1"
+  }
+}
