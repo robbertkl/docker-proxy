@@ -7,7 +7,7 @@
   "dependencies": {
     "async": "^1.5.2",
     "docker-events": "0.0.2",
-    "dockerode": "^2.2.9",
+    "dockerode": "^2.2.10",
     "mustache": "^2.2.1"
   }
 }
