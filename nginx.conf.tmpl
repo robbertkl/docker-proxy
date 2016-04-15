@@ -92,6 +92,7 @@ http {
     listen 443 ssl http2;
     ssl_certificate {{&fullchain}}; # {{&fingerprint}}
     ssl_certificate_key {{&key}};
+    proxy_set_header X-Forwarded-Ssl on;
     add_header Strict-Transport-Security "max-age=31536000; includeSubdomains; preload" always;
     {{/ssl}}
     include acme-challenge;
