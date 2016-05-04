@@ -31,7 +31,7 @@ http {
   ssl_certificate_key /etc/ssl/private/ssl-cert-snakeoil.key;
 
   ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
-  ssl_ciphers EECDH+aRSA+AES:TLSv1+kRSA+AES:TLSv1+kRSA+3DES;
+  ssl_ciphers EECDH+AES128:RSA+AES128:EECDH+AES256:RSA+AES256:EECDH+3DES:RSA+3DES:!MD5;
 
   ssl_session_timeout 5m;
   ssl_prefer_server_ciphers on;
