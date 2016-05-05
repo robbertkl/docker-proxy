@@ -37,7 +37,7 @@ fs.readFile(path.resolve(__dirname, 'nginx.conf.tmpl'), 'UTF-8', function(error,
 
   const docker = new Dockerode();
   const letsencrypt = new LetsEncrypt(process.env.LETSENCRYPT_EMAIL);
-  const generator = new Generator(docker, letsencrypt, template, {labelPrefix: 'nl.lapulapu.proxy'});
+  const generator = new Generator(docker, letsencrypt, template, {labelPrefix: 'proxy'});
   const nginx = new Nginx(`/etc/nginx/nginx-${process.pid}.conf`);
 
   nginx.on('exit', function(code, signal) {

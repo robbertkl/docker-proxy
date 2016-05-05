@@ -17,10 +17,10 @@ If you'd like to use a custom NGINX configuration template, just bind mount it w
 Run your web containers like this:
 
 ```
-docker run -d -l nl.lapulapu.proxy.host=example.org,www.example.org <image>
+docker run -d -l proxy.host=example.org,www.example.org <image>
 ```
 
-For HTTP basic authentication you can bind mount a directory with your password file(s) using `-v <path-to-passwd-dir>:/etc/nginx/htpasswd`. You can then use the label `nl.lapulapu.proxy.auth=<filename>` when starting a container to enable HTTP basic authentication for that container.
+For HTTP basic authentication you can bind mount a directory with your password file(s) using `-v <path-to-passwd-dir>:/etc/nginx/htpasswd`. You can then use the label `proxy.auth=<filename>` when starting a container to enable HTTP basic authentication for that container.
 
 ## Environment variables
 
@@ -32,8 +32,8 @@ For the proxy container:
 
 For your web containers:
 
-* `nl.lapulapu.proxy.host=` (1 or more hostnames, comma-separated)
-* `nl.lapulapu.proxy.auth=` (file for HTTP basic authentication, absolute or relative to `/etc/nginx/htpasswd`)
+* `proxy.host=` (1 or more hostnames, comma-separated)
+* `proxy.auth=` (file for HTTP basic authentication, absolute or relative to `/etc/nginx/htpasswd`)
 
 ## Authors
 
