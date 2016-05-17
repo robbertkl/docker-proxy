@@ -1,31 +1,29 @@
-FROM robbertkl/node
+FROM robbertkl/node:latest
 MAINTAINER Robbert Klarenbeek <robbertkl@renbeek.nl>
 
-# Install Nginx (mainline) and Let's Encrypt
-RUN curl -sSL http://nginx.org/keys/nginx_signing.key | apt-key add - \
-    && echo "deb http://nginx.org/packages/mainline/debian/ `lsb_release -cs` nginx" >> /etc/apt/sources.list
-RUN cleaninstall \
-    dialog \
-    gcc \
-    libffi-dev \
-    libssl-dev \
+RUN apk add --no-cache --virtual .docker-proxy \
+    --repository http://dl-cdn.alpinelinux.org/alpine/edge/main \
+    --repository http://dl-cdn.alpinelinux.org/alpine/edge/community \
+    certbot \
     nginx \
-    python \
-    python-dev \
-    python-pip \
-    ssl-cert
-RUN pip install -U letsencrypt
-RUN mkdir -p /var/www
-COPY acme-challenge /etc/nginx/
+    openssl
 
-# Install the app itself
+COPY acme-challenge /etc/nginx/
+RUN rm -rf /var/www/*
+RUN openssl req \
+    -x509 \
+    -newkey rsa:2048 \
+    -keyout /etc/ssl/private/snakeoil.key \
+    -out /etc/ssl/certs/snakeoil.pem \
+    -days 365 \
+    -nodes \
+    -subj "/CN=INVALID HOST"
+
 COPY package.json ./
 RUN npm install
 COPY . .
 
-# Let's Encrypt certificates and account info are kept in a volume
 VOLUME /etc/letsencrypt
 
-# Expose HTTP and HTTPS
 EXPOSE 80
 EXPOSE 443
