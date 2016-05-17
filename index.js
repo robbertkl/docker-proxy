@@ -38,7 +38,7 @@ fs.readFile(path.resolve(__dirname, 'nginx.conf.tmpl'), 'UTF-8', function(error,
   const docker = new Dockerode();
   const letsencrypt = new LetsEncrypt(process.env.LETSENCRYPT_EMAIL);
   const generator = new Generator(docker, letsencrypt, template, {labelPrefix: 'proxy'});
-  const nginx = new Nginx(`/etc/nginx/nginx-${process.pid}.conf`);
+  const nginx = new Nginx(`/etc/nginx/nginx.conf`);
 
   nginx.on('exit', function(code, signal) {
     let info = code === null ? `received ${signal}` : `exit status ${code}`;
