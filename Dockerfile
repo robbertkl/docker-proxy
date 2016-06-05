@@ -2,7 +2,6 @@ FROM robbertkl/node:latest
 MAINTAINER Robbert Klarenbeek <robbertkl@renbeek.nl>
 
 RUN apk add --no-cache \
-        --repository http://dl-cdn.alpinelinux.org/alpine/edge/main \
         --repository http://dl-cdn.alpinelinux.org/alpine/edge/community \
         certbot \
         nginx
