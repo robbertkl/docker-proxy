@@ -2,9 +2,14 @@ FROM robbertkl/node:latest
 MAINTAINER Robbert Klarenbeek <robbertkl@renbeek.nl>
 
 RUN apk add --no-cache \
+        nginx \
+        py-psutil \
+        py-configobj \
+        py-cparser
+
+RUN apk add --no-cache \
         --repository http://dl-cdn.alpinelinux.org/alpine/edge/community \
-        certbot \
-        nginx
+        certbot
 
 COPY acme-challenge /etc/nginx/
 RUN rm -rf /var/www/*
