@@ -4,6 +4,7 @@ MAINTAINER Robbert Klarenbeek <robbertkl@renbeek.nl>
 RUN apk add --no-cache \
         nginx \
         py-psutil \
+        py-configargparse \
         py-configobj \
         py-cparser
 
