@@ -88,8 +88,9 @@ fs.readFile(path.resolve(__dirname, 'nginx.conf.tmpl'), 'UTF-8', function(error,
 
     const events = new DockerEvents({ docker: docker });
     events.on('_message', function(message) {
-      if (['start', 'stop', 'die'].indexOf(message.status) < 0) return;
-      log(`Received Docker "${message.status}" event for container ${message.id.substr(0, 12)}`);
+      const action = `${message.Type}_${message.Action}`;
+      if (['container_start', 'container_stop', 'container_die', 'network_connect', 'network_disconnect'].indexOf(action) < 0) return;
+      log(`Received Docker "${action}" event for actor ${message.Actor.ID.substr(0, 12)}`);
       refresh();
     });
     events.start();
