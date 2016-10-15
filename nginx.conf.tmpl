@@ -73,8 +73,8 @@ http {
   }
 
   server {
-    listen 443 default_server ssl http2;
-    listen [::]:443 default_server ssl http2;
+    listen 443 default_server ssl; # http2 disabled for now
+    listen [::]:443 default_server ssl; # http2 disabled for now
     ssl_certificate /etc/ssl/certs/snakeoil.pem;
     ssl_certificate_key /etc/ssl/private/snakeoil.key;
     include acme-challenge;
@@ -98,8 +98,8 @@ http {
     listen [::]:80;
     {{/ssl}}
     {{#ssl}}
-    listen 443 ssl http2;
-    listen [::]:443 ssl http2;
+    listen 443 ssl; # http2 disabled for now
+    listen [::]:443 ssl; # http2 disabled for now
     ssl_certificate {{&fullchain}}; # {{&fingerprint}}
     ssl_certificate_key {{&key}};
     add_header Strict-Transport-Security "max-age=31536000; includeSubdomains; preload" always;
