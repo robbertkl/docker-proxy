@@ -3,10 +3,11 @@ MAINTAINER Robbert Klarenbeek <robbertkl@renbeek.nl>
 
 RUN apk add --no-cache \
         nginx \
-        py-psutil \
         py-configargparse \
         py-configobj \
-        py-cparser
+        py-cparser \
+        py-psutil \
+        py-rfc3339
 
 RUN apk add --no-cache \
         --repository http://dl-cdn.alpinelinux.org/alpine/edge/community \
