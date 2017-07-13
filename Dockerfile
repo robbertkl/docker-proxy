@@ -3,14 +3,6 @@ MAINTAINER Robbert Klarenbeek <robbertkl@renbeek.nl>
 
 RUN apk add --no-cache \
         nginx \
-        py-configargparse \
-        py-configobj \
-        py-cparser \
-        py-psutil \
-        py-rfc3339
-
-RUN apk add --no-cache \
-        --repository http://dl-cdn.alpinelinux.org/alpine/edge/community \
         certbot
 
 COPY acme-challenge /etc/nginx/
