@@ -1,10 +1,12 @@
-FROM robbertkl/node:latest
+FROM node:9.2.0-alpine
 MAINTAINER Robbert Klarenbeek <robbertkl@renbeek.nl>
 
-RUN apk add --no-cache \
-        nginx \
-        certbot
+ARG NODE_ENV=production
+ENV NODE_ENV=${NODE_ENV}
 
+WORKDIR /usr/src/app
+
+RUN apk add --no-cache certbot nginx openssl
 COPY acme-challenge /etc/nginx/
 RUN rm -rf /var/www/*
 RUN openssl req \
@@ -16,11 +18,12 @@ RUN openssl req \
         -nodes \
         -subj "/CN=INVALID HOST"
 
-COPY package.json ./
-RUN npm install
+COPY package.json yarn.lock ./
+RUN [ "${NODE_ENV}"="production" ] && yarn install --frozen-lockfile --production && yarn cache clean
 COPY . .
 
 VOLUME /etc/letsencrypt
-
 EXPOSE 80
 EXPOSE 443
+
+CMD [ "node", "." ]
