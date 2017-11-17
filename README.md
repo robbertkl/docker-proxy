@@ -1,7 +1,5 @@
 # robbertkl/proxy
 
-[![](https://badge.imagelayers.io/robbertkl/proxy:latest.svg)](https://imagelayers.io/?images=robbertkl/proxy:latest)
-
 Automated reverse proxy for Docker containers. While similar to [jwilder/nginx-proxy](https://github.com/jwilder/nginx-proxy), the main additional feature is fully automated SSL configuration using Let's Encrypt. Each virtual host gets its own SSL certificate, which is automatically renewed periodically.
 
 ## Usage
