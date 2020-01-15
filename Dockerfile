@@ -1,4 +1,4 @@
-FROM node:9.2.0-alpine
+FROM node:13-alpine
 MAINTAINER Robbert Klarenbeek <robbertkl@renbeek.nl>
 
 ARG NODE_ENV=production
