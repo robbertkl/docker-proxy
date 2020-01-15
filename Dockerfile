@@ -9,7 +9,7 @@ WORKDIR /usr/src/app
 RUN apk add --no-cache certbot nginx openssl
 COPY acme-challenge /etc/nginx/
 RUN rm -rf /var/www/*
-RUN openssl req \
+RUN mkdir -p /etc/ssl/certs && openssl req \
         -x509 \
         -newkey rsa:2048 \
         -keyout /etc/ssl/private/snakeoil.key \
