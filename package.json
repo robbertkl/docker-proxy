@@ -5,9 +5,9 @@
     "start": "node ."
   },
   "dependencies": {
-    "async": "latest",
+    "async": "^3.1.0",
     "docker-events": "latest",
-    "dockerode": "latest",
-    "mustache": "latest"
+    "dockerode": "^3.0.2",
+    "mustache": "^3.2.1"
   }
 }
