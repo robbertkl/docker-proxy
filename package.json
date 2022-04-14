@@ -5,7 +5,7 @@
     "start": "node ."
   },
   "dependencies": {
-    "async": "^3.1.0",
+    "async": "^3.2.2",
     "docker-events": "latest",
     "dockerode": "^3.0.2",
     "mustache": "^3.2.1"
